@@ -1,0 +1,29 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+  <changeSet author="mysql" id="01">
+
+    <createTable remarks="Used to store mapping for roles to permissions" tableName="permissions">
+
+      <column autoIncrement="true" name="id" type="int">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+
+      <column name="role_id" type="int">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+
+      <column name="permission_type" type="varchar(20)">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="permissions"
+      baseColumnNames="role_id" constraintName="roles_join_fk"
+      referencedTableName="roles" referencedColumnNames="id"/>
+  </changeSet>
+</databaseChangeLog>
