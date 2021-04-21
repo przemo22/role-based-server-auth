@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createNewUser(@Valid @RequestBody CreateUserDto createUserDto) {
+    public ResponseEntity<Object> createNewUser(@Valid @RequestBody CreateUserDto createUserDto) {
         try {
             UserResponseDto userResponseDto = userService.createNewUser(createUserDto);
             return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateUser(@NotNull @PathVariable Long id,
+    public ResponseEntity<Object> updateUser(@NotNull @PathVariable Long id,
         @Valid @RequestBody UpdateUserDto updateUserDto) {
         try {
             UserResponseDto userResponseDto = userService.updateUser(updateUserDto, id);
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createNewUser(@NotNull @PathVariable Long id) {
+    public ResponseEntity<Object> createNewUser(@NotNull @PathVariable Long id) {
         try {
             userService.deleteUser(id);
             return new ResponseEntity<>(HttpStatus.OK);

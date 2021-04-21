@@ -1,17 +1,26 @@
 package com.vis.server.backend.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class UserLoginResponseDto {
+public class UserLoginResponseDto implements Serializable {
 
-    private final String token;
+    private String token;
+
+    public UserLoginResponseDto() {
+    }
+
+    public UserLoginResponseDto(@JsonProperty("token") String token) {
+        this.token = token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getToken() {
         return token;
-    }
-
-    public UserLoginResponseDto(String token) {
-        this.token = token;
     }
 
     @Override

@@ -12,7 +12,7 @@
         <constraints primaryKey="true" nullable="false"/>
       </column>
       <column name="username" type="varchar(100)">
-        <constraints primaryKey="true" nullable="false"/>
+        <constraints primaryKey="true" nullable="false" unique="true"/>
       </column>
       <column name="password" type="varchar(100)"/>
 

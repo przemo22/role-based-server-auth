@@ -66,10 +66,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
             .authorizeRequests()
             .antMatchers("/v1/vis-test/login/", "/heartbeat").permitAll()
-            .antMatchers(HttpMethod.GET, "/v1/vis-test/users/").hasAnyAuthority("LIST_USERS")
-            .antMatchers(HttpMethod.POST, "/v1/vis-test/users/").hasAnyAuthority("CREATE_USERS")
-            .antMatchers(HttpMethod.PUT, "/v1/vis-test/users/").hasAnyAuthority("EDIT_USERS")
-            .antMatchers(HttpMethod.DELETE, "/v1/vis-test/users/").hasAnyAuthority("DELETE_USERS")
+            .antMatchers(HttpMethod.GET, "/v1/vis-test/users/").hasAuthority("LIST_USERS")
+            .antMatchers(HttpMethod.POST, "/v1/vis-test/users/").hasAuthority("CREATE_USERS")
+            .antMatchers(HttpMethod.PUT, "/v1/vis-test/users/{\\d+}").hasAuthority("EDIT_USERS")
+            .antMatchers(HttpMethod.DELETE, "/v1/vis-test/users/{\\d+}").hasAuthority("DELETE_USERS")
             .anyRequest().authenticated().and()
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 

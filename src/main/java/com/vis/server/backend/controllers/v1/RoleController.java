@@ -39,7 +39,7 @@ public class RoleController {
     }
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> insertNewRole(@Valid @RequestBody RoleDto roleDto) {
+    public ResponseEntity<Object> insertNewRole(@Valid @RequestBody RoleDto roleDto) {
         try {
             RoleResponseDto roleResponseDto = rolesService.insertRole(roleDto);
             return new ResponseEntity<>(roleResponseDto, HttpStatus.CREATED);
@@ -50,7 +50,7 @@ public class RoleController {
 
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateRole(@NotNull @PathVariable Long id,
+    public ResponseEntity<Object> updateRole(@NotNull @PathVariable Long id,
         @Valid @RequestBody RoleDto roleDto) {
         try {
             RoleResponseDto roleResponseDto = rolesService
@@ -62,7 +62,7 @@ public class RoleController {
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> deleteRole(@NotNull @PathVariable Long id) {
+    public ResponseEntity<Object> deleteRole(@NotNull @PathVariable Long id) {
         try {
             rolesService.deleteRole(id);
             return new ResponseEntity<>(HttpStatus.OK);

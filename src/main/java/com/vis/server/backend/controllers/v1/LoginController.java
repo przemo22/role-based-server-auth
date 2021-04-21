@@ -39,8 +39,9 @@ public class LoginController {
         this.userDetailsService = userDetailsService;
     }
 
+
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> userLogin(@Valid @RequestBody UserDto userDto) throws Exception {
+    public ResponseEntity<UserLoginResponseDto> userLogin(@Valid @RequestBody UserDto userDto) throws Exception {
         authenticate(userDto.getUsername(), userDto.getPassword());
 
         final UserDetails userDetails = userDetailsService

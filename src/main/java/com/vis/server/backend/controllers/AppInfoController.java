@@ -15,7 +15,7 @@ public class AppInfoController {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppInfoController.class);
 
     @GetMapping(value = "/heartbeat", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> heartbeat() {
+    public ResponseEntity<Object> heartbeat() {
         LOGGER.trace("Heartbeat request received");
         return new ResponseEntity<>("alive", HttpStatus.OK);
     }

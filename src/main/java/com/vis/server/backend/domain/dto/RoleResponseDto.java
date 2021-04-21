@@ -1,17 +1,21 @@
 package com.vis.server.backend.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vis.server.backend.domain.model.PermissionTypes;
 import java.util.Objects;
 import java.util.Set;
 
 public class RoleResponseDto {
 
-    private final Long id;
-    private final String name;
-    private final Set<PermissionTypes> permissions;
+    private Long id;
+    private String name;
+    private Set<PermissionTypes> permissions;
 
-    public RoleResponseDto(final Long id, final String name,
-        final Set<PermissionTypes> permissions) {
+    public RoleResponseDto(){
+    }
+
+    public RoleResponseDto(@JsonProperty("id") final Long id, @JsonProperty("name") final String name,
+        @JsonProperty("permissions") final Set<PermissionTypes> permissions) {
         this.id = id;
         this.name = name;
         this.permissions = permissions;
@@ -27,6 +31,18 @@ public class RoleResponseDto {
 
     public Set<PermissionTypes> getPermissions() {
         return permissions;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPermissions(Set<PermissionTypes> permissions) {
+        this.permissions = permissions;
     }
 
     @Override
